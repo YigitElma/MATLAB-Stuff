@@ -1,0 +1,48 @@
+clc
+clear 
+close all
+
+
+load v_values.mat
+
+V(1,:) = v10 ;
+V(2,:) = v20 ;
+V(3,:) = v30 ;
+V(4,:) = v40 ;
+V(5,:) = v50 ;
+V(6,:) = v60 ;
+V(7,:) = v70 ;
+V(8,:) = v80 ;
+V(9,:) = v90 ;
+V(10,:) = v100 ;
+
+for i = 1:10
+    for radial = 1:700
+        for axial = 1:50
+            OneDto2D(i,radial,axial) = V(i,(radial-1)*50 + axial) ;
+        end
+    end
+end
+
+for i = 1:10
+    One(:,:) = OneDto2D(i,1:5:700,:) ;
+
+    surf(1:50, 1:5:700, One)
+    colormap("hot")
+    colorbar
+    title("iteration number #", i*10 )
+    view([])
+
+
+    drawnow
+    pause(1)
+end
+
+
+
+
+
+
+
+
+
